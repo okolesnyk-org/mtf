@@ -16,10 +16,10 @@ class FrontendPage extends Page
     /**
      * Get page url.
      *
-     * @return void
+     * @return string
      */
     protected function getUrl()
     {
-        $this->url = $_ENV['app_frontend_url'] . static::MCA;
+        return $_ENV['app_frontend_url'] . static::MCA;
     }
 }
