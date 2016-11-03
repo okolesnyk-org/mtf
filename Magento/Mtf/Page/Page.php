@@ -100,7 +100,7 @@ class Page implements PageInterface
      *
      * @return string
      */
-    protected function getUrl()
+    public function getUrl()
     {
         return static::MCA;
     }

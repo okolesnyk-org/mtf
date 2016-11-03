@@ -18,7 +18,7 @@ class BackendPage extends Page
      *
      * @return string
      */
-    protected function getUrl()
+    public function getUrl()
     {
         return $_ENV['app_backend_url'] . static::MCA;
     }

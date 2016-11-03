@@ -1,3 +1,8 @@
+1.0.0-rc.49
+===========
+* Added GetUrl() method for Page classes
+* Removed \Magento\Mtf\Page\ExternalPage class
+
 1.0.0-rc.48
 ===========
 * Updated dependencies to use the latest PHPUnit version 
