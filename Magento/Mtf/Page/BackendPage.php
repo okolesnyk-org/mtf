@@ -14,11 +14,11 @@ namespace Magento\Mtf\Page;
 class BackendPage extends Page
 {
     /**
-     * Init page. Set page url.
+     * Get page url.
      *
      * @return void
      */
-    protected function initUrl()
+    protected function getUrl()
     {
         $this->url = $_ENV['app_backend_url'] . static::MCA;
     }

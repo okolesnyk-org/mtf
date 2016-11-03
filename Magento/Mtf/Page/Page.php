@@ -75,7 +75,7 @@ class Page implements PageInterface
     protected $eventManager;
 
     /**
-     * Set configuration instance, client browser and call initUrl method.
+     * Set configuration instance, client browser.
      *
      * @constructor
      * @param DataInterface $configData
