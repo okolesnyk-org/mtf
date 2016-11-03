@@ -140,7 +140,7 @@ class Page extends AbstractGenerate
             if (strpos($mca, 'http') === false) {
                 $areaMtfPage = 'FrontendPage';
             } else {
-                $areaMtfPage = 'ExternalPage';
+                $areaMtfPage = 'Page';
             }
         } else {
             $areaMtfPage = 'BackendPage';

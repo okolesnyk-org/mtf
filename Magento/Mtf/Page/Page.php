@@ -93,18 +93,16 @@ class Page implements PageInterface
         $this->browser = $browser;
         $this->blockFactory = $blockFactory;
         $this->eventManager = $eventManager;
-
-        $this->initUrl();
     }
 
     /**
-     * Init page. Set page url.
+     * Get page url.
      *
-     * @return void
+     * @return string
      */
-    protected function initUrl()
+    protected function getUrl()
     {
-        //
+        return self::MCA;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -119,7 +117,7 @@ class Page implements PageInterface
     public function open(array $params = [])
     {
         $this->eventManager->dispatchEvent(['execution'], ['[page MCA: ' . static::MCA . ']']);
-        $url = $this->url;
+        $url = $this->getUrl();
 
         foreach ($params as $paramName => $paramValue) {
             if (strpos($url, '?') !== false) {
