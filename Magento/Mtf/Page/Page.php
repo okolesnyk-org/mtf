@@ -102,7 +102,7 @@ class Page implements PageInterface
      */
     protected function getUrl()
     {
-        return self::MCA;
+        return static::MCA;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
