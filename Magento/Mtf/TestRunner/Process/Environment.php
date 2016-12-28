@@ -60,7 +60,8 @@ class Environment
             'events_preset',
             'log_directory',
             'module_whitelist',
-            'mage_mode'
+            'mage_mode',
+            'magento_timezone',
         ];
 
         $globalEnvironmentVariables = [];
