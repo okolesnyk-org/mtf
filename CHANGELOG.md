@@ -1,3 +1,5 @@
+* Default value is applied for events preset configuration
+
 1.0.0-rc.52
 ===========
 * Copyright year update
