@@ -10,14 +10,15 @@ if (PHP_SAPI !== 'cli') {
 }
 
 try {
-    require 'bootstrap.php';
+    $mtfRoot = dirname(__DIR__);
+    $mtfRoot = str_replace('\\', '/', $mtfRoot);
+    require $mtfRoot . '/bootstrap.php';
 } catch (\Exception $e) {
     echo 'Autoload error: ' . $e->getMessage();
     exit(1);
 }
 try {
-    $handler = new \Magento\Framework\App\ErrorHandler();
-    set_error_handler([$handler, 'handler']);
+    $objectManager = \Magento\Mtf\ObjectManagerFactory::getObjectManager();
     $application = $objectManager->create('Magento\Mtf\Console\Cli');
     $application->run();
 } catch (\Exception $e) {

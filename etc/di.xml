@@ -46,6 +46,14 @@
         </arguments>
     </type>
 
+    <type name="Magento\Mtf\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="run" xsi:type="object">Magento\Mtf\Server\Runner</item>
+            </argument>
+        </arguments>
+    </type>
+
     <type name="Magento\Mtf\Config\ValidationState">
         <arguments>
             <argument name="appMode" xsi:type="string">developer</argument>
