@@ -65,7 +65,10 @@ abstract class Scenario extends Injectable
                 'localArguments' => $this->localArguments
             ]
         );
-        $result = $this->stepIterator->iterate();
+        $result = $this->stepIterator->iterate()->afterRun(function () {
+
+            self::assertThat($value, $constraint);
+        })->run();
         $this->localArguments = array_merge($this->localArguments, $result);
     }
 

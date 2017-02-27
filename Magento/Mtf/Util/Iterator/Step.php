@@ -174,6 +174,13 @@ class Step extends AbstractIterator
             $stepResult = $step->run();
             $stepResult = (is_array($stepResult)) ? $stepResult : [];
             $this->result = array_merge($this->result, $stepResult);
+
+            if (isset($this->current()['constraint'])) {
+                foreach ($this->current()['constraint'] as $key => $value) {
+
+                }
+            }
+
             $this->next();
         }
 

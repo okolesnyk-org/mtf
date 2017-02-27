@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+ -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../etc/variations.xsd">
+    <testCase name="Magento\Mtf\Test\TestCase\ScenarioTest" summary="" ticketId="XXXXXX">
+        <variation name="Variation1">
+            <data name="search" xsi:type="string">MTF</data>
+        </variation>
+    </testCase>
+</config>
