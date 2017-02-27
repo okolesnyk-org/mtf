@@ -65,7 +65,7 @@ class Common
             $modulePrefix = '*';
             $moduleShortName = '*';
         }
-        $moduleDirectory = '/' . $modulePrefix . '/' . $moduleShortName . '/Test/';
+        $moduleDirectory = '/' . $modulePrefix . '/' . $moduleShortName . '/Test/Functional/';
         $directories = glob(MTF_TESTS_PATH . $moduleDirectory . $type);
         $directories = array_merge($directories, glob($generatedClassesTopDirectory . $moduleDirectory . $type));
         foreach ($directories as $directory) {
@@ -107,7 +107,7 @@ class Common
     protected function getTestXmlsByType($type)
     {
         $xmlFiles = [];
-        $directories = glob(MTF_TESTS_PATH . '/*/*/Test/' . $type);
+        $directories = glob(MTF_TESTS_PATH . '/*/*/Test/Functional/' . $type);
         foreach ($directories as $directory) {
             $dirIterator = new \RegexIterator(
                 new \RecursiveIteratorIterator(

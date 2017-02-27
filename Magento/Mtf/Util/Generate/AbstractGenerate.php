@@ -169,12 +169,12 @@ abstract class AbstractGenerate implements LauncherInterface
         $relativeFilePath = str_replace('\\', DIRECTORY_SEPARATOR, $class) . '.php';
         $relativeFolderPath = str_replace(DIRECTORY_SEPARATOR . $fileName, '', $relativeFilePath);
 
-        $filePath = MTF_BP . '/generated/' . $relativeFilePath;
+        $filePath = MTF_BP . '/generated/code/' . $relativeFilePath;
         if (file_exists($filePath)) {
             unlink($filePath);
         }
 
-        $folderPath = MTF_BP . '/generated/' . $relativeFolderPath;
+        $folderPath = MTF_BP . '/generated/code/' . $relativeFolderPath;
         if (!is_dir($folderPath)) {
             mkdir($folderPath, 0777, true);
         }

@@ -12,7 +12,7 @@
          verbose="true">
     <testsuites>
         <testsuite name="PHPUnit">
-            <directory suffix=".php">tests/Magento/Mtf</directory>
+            <directory suffix=".php">tests/app/Magento</directory>
         </testsuite>
     </testsuites>
 

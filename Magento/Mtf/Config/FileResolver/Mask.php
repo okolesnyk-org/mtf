@@ -62,7 +62,7 @@ class Mask implements FileResolverInterface
         $modulesPath = $this->moduleResolver->getModulesPath();
 
         foreach ($modulesPath as $modulePath) {
-            $path = $modulePath . '/Test/' . $scope . '/';
+            $path = $modulePath . '/Test/Functional/' . $scope . '/';
             if (is_readable($path)) {
                 $directoryIterator = new \RecursiveIteratorIterator(
                     new \RecursiveDirectoryIterator(

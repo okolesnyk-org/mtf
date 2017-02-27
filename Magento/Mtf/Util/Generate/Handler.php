@@ -63,8 +63,8 @@ class Handler extends AbstractGenerate
         $classShortName = ucfirst($name);
         $fileName = 'Ui.php';
         $moduleName = $item['module'];
-        $path = str_replace('_', '/', $moduleName) . '/Test/Handler/' . $classShortName;
-        $ns = str_replace('_', '\\', $moduleName) . '\\Test\\Handler\\' . $classShortName;
+        $path = str_replace('_', '/', $moduleName) . '/Test/Functional/Handler/' . $classShortName;
+        $ns = str_replace('_', '\\', $moduleName) . '\\Test\\Functional\\Handler\\' . $classShortName;
         $folderName = MTF_TESTS_PATH . $path;
         if (file_exists($folderName . '/' . $fileName)) {
             return;
@@ -105,8 +105,8 @@ class Handler extends AbstractGenerate
         $classShortName = ucfirst($name);
         $fileName = 'Curl.php';
         $moduleName = $item['module'];
-        $path = str_replace('_', '/', $moduleName) . '/Test/Handler/' . $classShortName;
-        $namespace = str_replace('_', '\\', $moduleName) . '\\Test\\Handler\\' . $classShortName;
+        $path = str_replace('_', '/', $moduleName) . '/Test/Functional/Handler/' . $classShortName;
+        $namespace = str_replace('_', '\\', $moduleName) . '\\Test\\Functional\\Handler\\' . $classShortName;
         $folderName = MTF_TESTS_PATH . $path;
         if (file_exists($folderName . '/' . $fileName)) {
             return;
@@ -147,8 +147,8 @@ class Handler extends AbstractGenerate
         $classShortName = ucfirst($name);
         $fileName = $classShortName . 'Interface.php';
         $moduleName = $item['module'];
-        $path = str_replace('_', '/', $moduleName) . '/Test/Handler/' . $classShortName;
-        $namespace = str_replace('_', '\\', $moduleName) . '\\Test\\Handler\\' . $classShortName;
+        $path = str_replace('_', '/', $moduleName) . '/Test/Functional/Handler/' . $classShortName;
+        $namespace = str_replace('_', '\\', $moduleName) . '\\Test\\Functional\\Handler\\' . $classShortName;
         $folderName = MTF_TESTS_PATH . $path;
         if (file_exists($folderName . '/' . $fileName)) {
             return;

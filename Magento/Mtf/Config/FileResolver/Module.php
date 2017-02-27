@@ -46,7 +46,7 @@ class Module implements FileResolverInterface
         $modulesPath = $this->moduleResolver->getModulesPath();
         $paths = [];
         foreach ($modulesPath as $modulePath) {
-            $path = $modulePath . '/Test/' . $scope . '/' . $filename;
+            $path = $modulePath . '/Test/Functional/' . $scope . '/' . $filename;
             if (is_readable($path)) {
                 $paths[] = $path;
             }

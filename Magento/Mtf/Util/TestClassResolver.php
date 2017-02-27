@@ -45,14 +45,14 @@ class TestClassResolver
 
         $modules = $this->moduleResolver->getModulesPath();
         foreach ($modules as $modulePath) {
-            if (!is_readable($modulePath . '/Test/' . $classType)) {
+            if (!is_readable($modulePath . '/Test/Functional/' . $classType)) {
                 continue;
             }
 
             $dirIterator = new \RegexIterator(
                 new \RecursiveIteratorIterator(
                     new \RecursiveDirectoryIterator(
-                        $modulePath . '/Test/' . $classType,
+                        $modulePath . '/Test/Functional/' . $classType,
                         \FilesystemIterator::SKIP_DOTS | \FilesystemIterator::FOLLOW_SYMLINKS
                     )
                 ),

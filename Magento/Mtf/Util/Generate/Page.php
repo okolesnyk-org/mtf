@@ -60,7 +60,7 @@ class Page extends AbstractGenerate
         $className = ucfirst($name);
         $module =  str_replace('_', '/', $data['module']);
         $area = isset($data['area']) ? $data['area'] : '';
-        $folderPath = $module . '/Test/Page' . (empty($area) ? '' : ('/' . $area));
+        $folderPath = $module . '/Test/Functional/Page' . (empty($area) ? '' : ('/' . $area));
         $class = str_replace('/', '\\', $folderPath . '/' . $className);
         $mca = isset($data['mca']) ? $data['mca'] : '';
         $areaMtfPage = $this->getParentPage($area, $mca);
