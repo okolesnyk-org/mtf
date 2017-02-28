@@ -53,7 +53,7 @@ class Generator
      */
     public function generateClass($className)
     {
-        $classNameRegexp = '/\\\Test\\\([^\\\]+)(?:\\\[^\\\]+)+$/';
+        $classNameRegexp = '/\\\Test\\\Functional\\\([^\\\]+)(?:\\\[^\\\]+)+$/';
 
         if (preg_match($classNameRegexp, $className, $matches)) {
             $classType = lcfirst($matches[1]);
