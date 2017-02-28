@@ -207,7 +207,7 @@ abstract class Injectable extends Functional
         if (isset($this->currentVariation['arguments']['issue'])
             && !empty($this->currentVariation['arguments']['issue'])
         ) {
-            $this->markTestIncomplete($this->currentVariation['arguments']['issue']);
+            $this->markTestSkipped($this->currentVariation['arguments']['issue']);
         }
         $testResult = parent::runTest();
         $this->localArguments = array_merge($this->localArguments, is_array($testResult) ? $testResult : []);
