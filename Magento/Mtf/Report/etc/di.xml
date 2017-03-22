@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2013-2017 Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Mtf\Console\CommandListInterface">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="get-variation-statistic" xsi:type="object">Magento\Mtf\Report\Statistic\Command\TestAnalyzer</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Mtf\Report\Statistic\Manager">
+        <arguments>
+            <argument name="componentList" xsi:type="array">
+                <item name="variation-data" xsi:type="object">Magento\Mtf\Report\Statistic\Component\VariationData</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Mtf\Report\Converter\Csv\Basic">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="fields" xsi:type="array">
+                    <item name="module" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">100</item>
+                        <item name="field_key" xsi:type="string">module</item>
+                        <item name="field_name" xsi:type="string">CodeModule</item>
+                    </item>
+                    <item name="test_case_class" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">105</item>
+                        <item name="field_key" xsi:type="string">test_case_class</item>
+                        <item name="field_name" xsi:type="string">CodeTestCaseClass</item>
+                    </item>
+                    <item name="tags/severity" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">110</item>
+                        <item name="field_key" xsi:type="string">tags/severity</item>
+                        <item name="field_name" xsi:type="string">CodeSeverity</item>
+                    </item>
+                    <item name="variation_name" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">115</item>
+                        <item name="field_key" xsi:type="string">variation_name</item>
+                        <item name="field_name" xsi:type="string">CodeVariation</item>
+                    </item>
+                    <item name="test_suites" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">125</item>
+                        <item name="field_key" xsi:type="string">test_suites</item>
+                        <item name="field_name" xsi:type="string">TestSuite</item>
+                    </item>
+                    <item name="tags/test_type" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">130</item>
+                        <item name="field_key" xsi:type="string">tags/test_type</item>
+                        <item name="field_name" xsi:type="string">TestType</item>
+                    </item>
+                    <item name="tags/stable" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">135</item>
+                        <item name="field_key" xsi:type="string">tags/stable</item>
+                        <item name="field_name" xsi:type="string">Stable</item>
+                    </item>
+                    <item name="tags/to_maintain" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">140</item>
+                        <item name="field_key" xsi:type="string">tags/to_maintain</item>
+                        <item name="field_name" xsi:type="string">ToMaintain</item>
+                    </item>
+                    <item name="issue" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">145</item>
+                        <item name="field_key" xsi:type="string">issue</item>
+                        <item name="field_name" xsi:type="string">Issue</item>
+                    </item>
+                    <item name="test_case_tags/MVP" xsi:type="array">
+                        <item name="sort_order" xsi:type="string">150</item>
+                        <item name="field_key" xsi:type="string">test_case_tags/MVP</item>
+                        <item name="field_name" xsi:type="string">MVP</item>
+                    </item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

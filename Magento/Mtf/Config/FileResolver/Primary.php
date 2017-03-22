@@ -44,7 +44,7 @@ class Primary implements FileResolverInterface
     {
         $paths = [];
         foreach ($this->getPathPatterns($filename, $scope) as $pattern) {
-            $paths = array_merge($paths, glob($pattern));
+            $paths = array_merge($paths, @glob($pattern, GLOB_BRACE));
         }
         return array_combine($paths, $paths);
     }

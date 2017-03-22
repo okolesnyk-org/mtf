@@ -107,15 +107,20 @@ class Variation extends AbstractIterator
             'testCase/' . get_class($this->testCase) . '/variation',
             ['Default' => []]
         );
+        $testCaseId = $this->configData->get(
+            'testCase/' . get_class($this->testCase) . '/ticketId',
+            null
+        );
         foreach ($variations as $key => &$variation) {
             if (isset($variation['replace'])) {
                 unset($variations[$variation['replace']]);
             }
             if (isset($variation['data'])) {
-                $variation['variation_name'] = $key;
                 $variations[$key] = array_replace($variation, $variation['data']);
                 unset($variations[$key]['data']);
             }
+            $variation['variation_name'] = $key;
+            $variation['testCaseId'] = $testCaseId;
         }
         return $variations;
     }

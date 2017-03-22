@@ -42,7 +42,7 @@ class Dom extends \Magento\Mtf\Config\Reader\Filesystem
             '/config/(type|virtualType)/arguments/argument(/item)+' => 'name'
         ],
         $domDocumentClass = 'Magento\Mtf\Config\Dom',
-        $defaultScope = 'etc'
+        $defaultScope = '{etc,lib/Magento/Mtf/*/etc,Magento/Mtf/*/etc,tests/app/*/*/*/etc}'
     ) {
         parent::__construct(
             $fileResolver,
