@@ -6,7 +6,7 @@
 namespace Magento\Mtf\Report\Converter\Csv;
 
 /**
- * Converter of any array data to an csv representation with no data loss
+ * Converter of any array data to an csv representation with no data loss.
  */
 class Basic
 {

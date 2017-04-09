@@ -21,7 +21,6 @@ class VariationData implements ComponentInterface
      */
     public function getData(array $variationData)
     {
-        $data = [];
         $arguments = $variationData['arguments'];
         $data['variation_name'] = isset($arguments['variation_name']) ? $arguments['variation_name'] : '';
         $data['summary'] = isset($arguments['summary']) ? $arguments['summary'] : '';

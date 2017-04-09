@@ -9,6 +9,9 @@ namespace Magento\Mtf\Report\Statistic;
 use Magento\Mtf\ObjectManagerInterface;
 use Magento\Mtf\Util\Iterator\TestCase;
 
+/**
+ * Variation data report manager.
+ */
 class Manager
 {
     /**
@@ -109,12 +112,12 @@ class Manager
             $objectManager = $objectManagerFactory->create(
                 ['Magento\Mtf\Config\TestRunner' => $configData]
             );
-            /** @var $testIterator \Magento\Mtf\Util\Iterator\TestCase */
+            /** @var \Magento\Mtf\Util\Iterator\TestCase $testIterator */
             $testIterator = $objectManager->create('Magento\Mtf\Util\Iterator\TestCase');
             for (; $testIterator->valid(); $testIterator->next()) {
                 $arguments = $testIterator->current();
                 $test = $objectManager->create($arguments['class']);
-                /** @var $testVariationIterator \Magento\Mtf\Util\Iterator\TestCaseVariation */
+                /** @var \Magento\Mtf\Util\Iterator\TestCaseVariation $testVariationIterator */
                 $testVariationIterator = $objectManager->create(
                     'Magento\Mtf\Util\Iterator\TestCaseVariation',
                     ['testCase' => $test]

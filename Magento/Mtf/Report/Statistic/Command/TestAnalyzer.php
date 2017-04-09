@@ -11,6 +11,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Magento\Mtf\Report\Statistic\Manager;
 
+/**
+ * Test analyzer command class.
+ */
 class TestAnalyzer extends \Symfony\Component\Console\Command\Command
 {
     /**
@@ -19,11 +22,15 @@ class TestAnalyzer extends \Symfony\Component\Console\Command\Command
     const CSV_REPORT_PATH = MTF_BP . '/var/log/variations_data.csv';
 
     /**
+     * Manager of separate components.
+     *
      * @var Manager
      */
     private $manager;
 
     /**
+     * Converter to CSV for fetched data.
+     *
      * @var Basic
      */
     private $converter;
@@ -64,8 +71,7 @@ class TestAnalyzer extends \Symfony\Component\Console\Command\Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $output->writeln("Collecting test variation stats...");
-        $now = microtime();
         $this->converter->saveTo($this->manager->getData(), self::CSV_REPORT_PATH);
-        $output->writeln("Test statistic preparation finished in: " . microtime() - $now);
+        $output->writeln("Test statistic preparation finished.");
     }
 }
