@@ -144,6 +144,13 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
     private $snapshot;
 
     /**
+     * Number of variation restart attempts.
+     *
+     * @var int
+     */
+    private $rerunCount;
+
+    /**
      * Constructs a test case with the given name.
      *
      * @param null $name
@@ -155,6 +162,7 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
         $this->name = $name;
         $this->data = $data;
         $this->dataName = $dataName;
+        $this->rerunCount = $_ENV['rerun_count'];
 
         /** @var ProcessManager $processManager */
         $this->processManager = ProcessManager::factory();
@@ -392,6 +400,20 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
             } catch (\Exception $_e) {
                 $e = $_e;
             }
+        }
+
+        // Rerun variation if it failed and there's rerun count present.
+        if ($this->rerunCount != 0 && isset($e)) {
+            $this->rerunCount -= 1;
+            $this->status = null;
+            $this->statusMessage = '';
+            $e = null;
+            $message = '%s has failed with an exception and will be restarted';
+            fwrite(
+                STDERR,
+                sprintf($message . PHP_EOL, $this->getVariationName())
+            );
+            $this->runBare();
         }
 
         // Workaround for missing "finally".
