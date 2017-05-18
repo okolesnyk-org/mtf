@@ -24,6 +24,11 @@ use Magento\Mtf\TestRunner\Process\ProcessManager;
 abstract class Functional extends \PHPUnit_Framework_TestCase
 {
     /**
+     * Message of variation rerun.
+     */
+    const RERUN_MESSAGE = '%s has failed with an exception and will be restarted';
+
+    /**
      * @var \Magento\Mtf\ObjectManager
      */
     protected $objectManager;
@@ -408,10 +413,9 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
             $this->status = null;
             $this->statusMessage = '';
             $e = null;
-            $message = '%s has failed with an exception and will be restarted';
             fwrite(
                 STDERR,
-                sprintf($message . PHP_EOL, $this->getVariationName())
+                sprintf(self::RERUN_MESSAGE . PHP_EOL, $this->getVariationName())
             );
             $this->runBare();
         }
