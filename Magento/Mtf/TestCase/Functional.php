@@ -413,8 +413,9 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
             $this->status = null;
             $this->statusMessage = '';
             $e = null;
+            $stderr = fopen('php://stderr', 'w');
             fwrite(
-                STDERR,
+                $stderr,
                 sprintf(self::RERUN_MESSAGE . PHP_EOL, $this->getVariationName())
             );
             $this->runBare();
