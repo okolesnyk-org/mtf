@@ -153,7 +153,7 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
      *
      * @var int
      */
-    private $rerunCount;
+    protected $rerunCount;
 
     /**
      * Constructs a test case with the given name.
@@ -410,8 +410,8 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
         // Rerun variation if it failed and there's rerun count present.
         if ($this->rerunCount != 0 && isset($e)) {
             $this->rerunCount -= 1;
-            $this->status = null;
-            $this->statusMessage = '';
+            $this->status = \PHPUnit_Runner_BaseTestRunner::STATUS_WARNING;
+            $this->statusMessage = sprintf(self::RERUN_MESSAGE . PHP_EOL, $this->getVariationName());
             $e = null;
             $stderr = fopen('php://stderr', 'w');
             fwrite(

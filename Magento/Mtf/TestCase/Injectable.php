@@ -280,6 +280,7 @@ abstract class Injectable extends Functional
         }
 
         $variation['arguments'] = $resolvedArguments;
+        $this->rerunCount = $_ENV['rerun_count'];
 
         return $variation;
     }
