@@ -418,7 +418,7 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
                 $stderr,
                 sprintf(self::RERUN_MESSAGE . PHP_EOL, $this->getVariationName())
             );
-            $this->runBare();
+            $this->run($this->getTestResultObject());
         }
 
         // Workaround for missing "finally".
