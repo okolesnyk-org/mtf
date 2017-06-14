@@ -66,6 +66,13 @@ abstract class Injectable extends Functional
     protected $currentVariation = [];
 
     /**
+     * Number of variation restart attempts.
+     *
+     * @var int
+     */
+    protected $rerunCount;
+
+    /**
      * Constructs a test case with the given name.
      *
      * @constructor
@@ -79,6 +86,7 @@ abstract class Injectable extends Functional
         parent::__construct($name, $data, $dataName);
         $this->dataId = get_class($this) . '::' . $name;
         $this->filePath = $path;
+        $this->rerunCount = empty($_ENV['rerun_count']) ? 0 : $_ENV['rerun_count'];
     }
 
     /**
@@ -156,7 +164,11 @@ abstract class Injectable extends Functional
                     $this->localArguments
                 );
                 $this->executeTestVariation($result, $variation);
-                $testVariationIterator->next();
+                if ($this->rerunCount > 0 && $this->getStatus() != \PHPUnit_Runner_BaseTestRunner::STATUS_PASSED) {
+                    $this->rerunCount -= 1;
+                } else {
+                    $testVariationIterator->next();
+                }
                 $this->localArguments = [];
             }
         } catch (\PHPUnit_Framework_IncompleteTestError $phpUnitException) {
@@ -207,6 +219,7 @@ abstract class Injectable extends Functional
         if (isset($this->currentVariation['arguments']['issue'])
             && !empty($this->currentVariation['arguments']['issue'])
         ) {
+            $this->rerunCount = 0;
             $this->markTestIncomplete($this->currentVariation['arguments']['issue']);
         }
         $testResult = parent::runTest();

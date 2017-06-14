@@ -26,7 +26,7 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
     /**
      * Message of variation rerun.
      */
-    const RERUN_MESSAGE = '%s has failed with an exception and will be restarted';
+    const RERUN_MESSAGE = 'Variation has failed with an exception and will be restarted.\n';
 
     /**
      * @var \Magento\Mtf\ObjectManager
@@ -149,13 +149,6 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
     private $snapshot;
 
     /**
-     * Number of variation restart attempts.
-     *
-     * @var int
-     */
-    protected $rerunCount;
-
-    /**
      * Constructs a test case with the given name.
      *
      * @param null $name
@@ -167,7 +160,6 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
         $this->name = $name;
         $this->data = $data;
         $this->dataName = $dataName;
-        $this->rerunCount = $_ENV['rerun_count'];
 
         /** @var ProcessManager $processManager */
         $this->processManager = ProcessManager::factory();
@@ -407,22 +399,14 @@ abstract class Functional extends \PHPUnit_Framework_TestCase
             }
         }
 
-        // Rerun variation if it failed and there's rerun count present.
-        if ($this->rerunCount != 0 && isset($e)) {
-            $this->rerunCount -= 1;
-            $this->status = \PHPUnit_Runner_BaseTestRunner::STATUS_WARNING;
-            $this->statusMessage = sprintf(self::RERUN_MESSAGE . PHP_EOL, $this->getVariationName());
-            $e = null;
-            $stderr = fopen('php://stderr', 'w');
-            fwrite(
-                $stderr,
-                sprintf(self::RERUN_MESSAGE . PHP_EOL, $this->getVariationName())
-            );
-            $this->run($this->getTestResultObject());
-        }
-
         // Workaround for missing "finally".
         if (isset($e)) {
+            if (!empty($this->rerunCount)
+                && $this->rerunCount > 0
+                && $this->getStatus() !== \PHPUnit_Runner_BaseTestRunner::STATUS_INCOMPLETE) {
+                self::markTestIncomplete(self::RERUN_MESSAGE);
+                return;
+            }
             $this->onNotSuccessfulTest($e);
         }
     }
