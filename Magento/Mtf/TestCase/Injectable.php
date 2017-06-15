@@ -275,9 +275,9 @@ abstract class Injectable extends Functional
             $arguments = array_merge($variation['arguments'], $arguments);
         }
         if (isset($variation['arguments']['variation_name'])) {
-            $this->setVariationName($variation['arguments']['variation_name']);
+            $this->setVariationName($variation['arguments']['variation_name'] . "_" . $this->rerunCount);
         } else {
-            $this->setVariationName($variation['id']);
+            $this->setVariationName($variation['id'] . "_" . $this->rerunCount);
         }
         $resolvedArguments = $this->getObjectManager()
             ->prepareArguments($this, $this->getName(false), $arguments);
